@@ -11,6 +11,7 @@ class Producto(models.Model):
 
 
 class Camiseta(Producto):
+    codigo_camiseta = models.CharField(max_length=50, unique=True, default="N/A")
     talla = models.CharField(max_length=10)
     color = models.CharField(max_length=50)
 
@@ -19,6 +20,7 @@ class Camiseta(Producto):
 
 
 class Pantalon(Producto):
+    codigo_pantalon = models.CharField(max_length=50, unique=True, default="N/A")
     talla = models.CharField(max_length=10)
     estilo = models.CharField(max_length=50)
 
@@ -26,12 +28,20 @@ class Pantalon(Producto):
         return f"{self.nombre} - {self.estilo} - Talla: {self.talla}"
 
 
+class Calzado(Producto):
+    codigo_calzado = models.CharField(max_length=50, unique=True, default="N/A")
+    talla = models.CharField(max_length=10)
+    tipo = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.tipo} - Talla: {self.talla}"
+
+
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(unique=True, default="N/A")
     direccion = models.CharField(max_length=255)
 
     def __str__(self):
         return self.nombre
 
-# Create your models here.
