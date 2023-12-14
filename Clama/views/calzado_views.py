@@ -2,16 +2,20 @@ from django.shortcuts import render, redirect
 from Clama.models import Calzado
 # from Clama.forms import CalzadoForm
 
-# Vista para listar todos los calzados
-def lista_calzados(request):
-    # calzados = Calzado.objects.all()
+def probando(request):
     contexto = {}
     return render(request, 'index.html', contexto)
 
+
+# Vista para listar todos los calzados
+def lista_calzados(request):
+    calzados = Calzado.objects.all()
+    return render(request, 'lista_calzados.html', {'calzados': calzados})
+
 # Vista para mostrar detalles de un calzado específico
-def detalle_calzado(request, calzado_id):
-    calzado = Calzado.objects.get(id=calzado_id)
-    return render(request, 'detalle_calzado.html', {'calzado': calzado})
+def detalle_calzado(request):
+    # calzado = Calzado.objects.get(id=calzado_id)
+    return render(request, 'detalle_calzado.html', {'calzado': None})
 
 # Vista para crear un nuevo calzado
 # def crear_calzado(request):

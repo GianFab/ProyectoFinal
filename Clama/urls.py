@@ -6,5 +6,8 @@ from Clama.views.camiseta_views import *
 from Clama.views.usuario_views import *
 
 urlpatterns = [
-    path('calzado/', lista_calzados),
+    path('calzados/', lista_calzados),
+    path('calzado/', detalle_calzado),
+    path('camiseta/', lista_camisetas),
+    path('principal/', probando),
 ]
