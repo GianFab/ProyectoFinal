@@ -85,6 +85,13 @@
   box-sizing: border-box;
 }
 
+#miHeader {
+    background-image: url('Clama/static/assets/FondoClama.jpg');
+    background-size: cover; /* Para que la imagen se ajuste al tamaño del encabezado */
+    background-position: center; /* Para centrar la imagen */
+    background-color: #FFC5C5; /* Color de fondo en caso de que la imagen no se cargue */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
