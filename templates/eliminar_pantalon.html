@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block lista %}
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <h4>Estas por eliminar el siguiente producto:</h4>
+            <h6>Nombre: {{ pantalon.nombre }}</h6>
+            <h6>Codigo: {{ pantalon.codigo_pantalon }}</h6>
+            <h6>Descripcion: {{ pantalon.descripcion }}</h6>
+            <h6>Precio: {{ pantalon.precio }}</h6>
+            <hr>
+            <input type="submit" value="Eliminar">
+            <a href="{% url 'pantalones' %}"><input type="button" value="Cancelar"></a>
+        </form>
+{% endblock %}
