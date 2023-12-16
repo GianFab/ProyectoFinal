@@ -32,16 +32,33 @@
                                                     {% endif %}
                                                 </span>
                                                 ${{ camiseta.precio }}
+                                                <hr>
+                                                <h6 class="fw-bolder">Dueño: {{ camiseta.usuario }}</h6>
                                             </div>
                                         </div>
+                                        {% if user == calzado.usuario %}
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'actualizar_camiseta' camiseta.id %}">Actualizar</a></div>
                                         </div>
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_camiseta' camiseta.id %}">Eliminar</a></div>
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
         </div>
+</div>
+<div>
+    <h3>Comentarios:</h3>
+    {% for comentario in comentarios %}
+        <p>{{ comentario.fecha_creacion }} - {{ comentario.texto }} - {{ comentario.usuario }}</p>
+    {% empty %}
+        <p>No hay comentarios aún.</p>
+    {% endfor %}
+    <form action="{% url 'agregar_comentario_camiseta' camiseta_id=camiseta.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Agregar Comentario">
+    </form>
 </div>
 {% endblock %}

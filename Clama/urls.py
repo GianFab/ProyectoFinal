@@ -1,9 +1,11 @@
 from django.urls import path
 from Clama.views.calzado_views import *
+from Clama.views.comentario_views import *
 from Clama.views.producto_views import *
 from Clama.views.pantalon_views import *
 from Clama.views.camiseta_views import *
 from Clama.views.usuario_views import *
+
 
 urlpatterns = [
     path('calzados/', ListaCalzados.as_view(), name='calzados'),
@@ -27,5 +29,9 @@ urlpatterns = [
     path('actualizar_pantalon/<int:pantalon_id>/', EditarPantalon.as_view(), name='actualizar_pantalon'),
     path('eliminar_pantalon/<int:pantalon_id>/', EliminarPantalon.as_view(), name='eliminar_pantalon'),
 
+    path('agregar_comentario_cl/<int:calzado_id>/', AgregarComentarioCalzado.as_view(), name='agregar_comentario_calzado'),
+    path('agregar_comentario_p/<int:pantalon_id>/', AgregarComentarioPantalon.as_view(), name='agregar_comentario_pantalon'),
+    path('agregar_comentario_cm/<int:camiseta_id>/', AgregarComentarioCamiseta.as_view(), name='agregar_comentario_camiseta'),
+    
     path('principal/', ListaProductos.as_view(), name='principal'),
 ]

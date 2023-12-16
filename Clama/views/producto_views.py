@@ -9,7 +9,7 @@ from Clama.forms.producto_form import BusquedaProductoForm
 from Clama.models import Producto
 
 
-class ListaProductos(LoginRequiredMixin, ListView):
+class ListaProductos(ListView):
     model = Producto
     template_name = 'lista_productos.html'
     context_object_name = 'productos_con_oferta'

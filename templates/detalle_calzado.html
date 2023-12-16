@@ -48,4 +48,17 @@
                                 </div>
         </div>
 </div>
+<div>
+    <h3>Comentarios:</h3>
+    {% for comentario in comentarios %}
+        <p>{{ comentario.fecha_creacion }} - {{ comentario.texto }} - {{ comentario.usuario }}</p>
+    {% empty %}
+        <p>No hay comentarios aún.</p>
+    {% endfor %}
+    <form action="{% url 'agregar_comentario_calzado' calzado_id=calzado.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Agregar Comentario">
+    </form>
+</div>
 {% endblock %}

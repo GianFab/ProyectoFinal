@@ -31,6 +31,7 @@ class DetalleCamiseta(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['precio_oferta'] = self.object.precio_oferta()
+        context['comentarios'] = self.object.comentarios.all()
         return context
 
     def get_object(self, queryset=None):
