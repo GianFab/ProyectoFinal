@@ -13,5 +13,5 @@ urlpatterns = [
     path('actualizar_calzado/<int:calzado_id>/', editar_calzado, name='actualizar_calzado'),
     path('eliminar_calzado/<int:calzado_id>/', eliminar_calzado, name='eliminar_calzado'),
     path('camiseta/', lista_camisetas),
-    path('principal/', probando),
+    path('principal/', probando, name='principal'),
 ]
