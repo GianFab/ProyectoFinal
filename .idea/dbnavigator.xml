@@ -28,6 +28,7 @@
         <condition column="id" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="ea31b1c6-fb86-4a64-98ad-a8a916ec8d81" dataset="main.auth_user_groups" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="ea31b1c6-fb86-4a64-98ad-a8a916ec8d81" dataset="main.Clama_producto" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">

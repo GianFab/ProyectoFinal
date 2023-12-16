@@ -39,7 +39,7 @@ def logout_view(request):
 
 def register_request(request):
     if request.method == "POST":
-        # form = UserCreationForm(request.POST)
+
         form = UserRegisterForm(request.POST)
 
         if form.is_valid():
@@ -47,7 +47,6 @@ def register_request(request):
 
             return redirect('principal')
 
-    # form = UserCreationForm()
     form = UserRegisterForm()
     contexto = {
         "form": form,
@@ -57,24 +56,16 @@ def register_request(request):
 
 @login_required
 def editar_request(request):
-
-    user = request.user
-
     if request.method == "POST":
 
-        form = UserUpdateForm(request.POST)
+        form = UserRegisterForm(request.POST)
+
         if form.is_valid():
-            data = form.cleaned_data
+            form.save()
 
-            user.email = data['email']
-            user.last_name = data['last_name']
-
-            user.save()
             return redirect('principal')
 
-    form = UserUpdateForm(initial={"email": user.email,
-                                   "last_name": user.last_name})
-
+    form = UserRegisterForm()
     contexto = {
         "form": form,
     }
@@ -87,25 +78,29 @@ def editar_avatar(request):
     user = request.user
 
     if request.method == "POST":
-
         form = AvatarUpdateForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data
-
             try:
                 avatar = user.avatar
                 avatar.imagen = data["imagen"]
+                avatar.descripcion = data["descripcion"]
+                avatar.pagina = data["pagina"]
+                avatar.save()
             except:
                 avatar = Avatar(
                     user=user,
-                    imagen=data['imagen']
+                    imagen=data['imagen'],
+                    descripcion=data['descripcion'],
+                    pagina=data['pagina']
                 )
+                avatar.save()
+            return redirect('editar_avatar')
+    else:
+        form = AvatarUpdateForm()
 
-            avatar.save()
-            return redirect('principal')
-
-    form = AvatarUpdateForm()
     contexto = {
         "form": form,
     }
     return render(request, "Accounts/avatar.html", contexto)
+

@@ -53,10 +53,20 @@
 <!--                        </button>-->
 <!--                    </form>-->
                     {% if user.is_authenticated %}
-                    <img style="height: 50px" src="{{ user.avatar.imagen.url }}" alt="">
+                    {% if user.avatar.imagen %}
+                        <img style="height: 50px" src="{{ user.avatar.imagen.url }}" alt="">
+                    {% endif %}
                     <form action="{% url 'logout' %}" method="post">
                       {% csrf_token %}
                       <button class="btn btn-outline-dark" type="submit">Cerrar sesión</button>
+                    </form>
+                    <form action="{% url 'editar_avatar' %}" method="post">
+                      {% csrf_token %}
+                      <button class="btn btn-outline-dark" type="submit">Perfil</button>
+                    </form>
+                    <form action="{% url 'editar' %}" method="post">
+                      {% csrf_token %}
+                      <button class="btn btn-outline-dark" type="submit">Usuario</button>
                     </form>
                     {% else %}
                     <form action="{% url 'register' %}" >
