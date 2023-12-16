@@ -6,7 +6,7 @@
                 <div class="col mb-5">
                                     <div class="card h-100">
                                         <!-- Sale badge-->
-                                        {% if calzado.oferta %}
+                                        {% if pantalon.oferta %}
                                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                                         {% endif %}
                                         <!-- Product image-->
@@ -15,7 +15,7 @@
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <!-- Product name-->
-                                                <h5 class="fw-bolder">{{ calzado.nombre }}</h5>
+                                                <h5 class="fw-bolder">{{ pantalon.nombre }}</h5>
                                                 <!-- Product reviews-->
                                                 <div class="d-flex justify-content-center small text-warning mb-2">
                                                     <div class="bi-star-fill"></div>
@@ -26,24 +26,20 @@
                                                 </div>
                                                 <!-- Product price-->
                                                 <span class="text-muted text-decoration-line-through">
-                                                    {% if calzado.oferta %}
+                                                    {% if pantalon.oferta %}
                                                         ${{ precio_oferta }}
                                                     <br>
                                                     {% endif %}
                                                 </span>
-                                                ${{ calzado.precio }}
-                                                <hr>
-                                                <h6 class="fw-bolder">Dueño: {{ calzado.usuario }}</h6>
+                                                ${{ pantalon.precio }}
                                             </div>
                                         </div>
-                                        {% if user == calzado.usuario %}
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'actualizar_calzado' calzado.id %}">Actualizar</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'actualizar_pantalon' pantalon.id %}">Actualizar</a></div>
                                         </div>
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_calzado' calzado.id %}">Eliminar</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_pantalon' pantalon.id %}">Eliminar</a></div>
                                         </div>
-                                        {% endif %}
                                     </div>
                                 </div>
         </div>
